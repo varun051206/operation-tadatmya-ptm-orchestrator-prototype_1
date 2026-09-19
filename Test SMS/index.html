@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>SRM MCET AIDS — PTM Communication Portal</title>
+  <meta name="description" content="Official Department of Artificial Intelligence and Data Science PTM Invitation Portal for SRM MCET.">
+  <style>
+    /* ==========================================================================
+       OFFICIAL INSTITUTIONAL DESIGN SYSTEM
+       Department of Artificial Intelligence & Data Science, SRM MCET
+       System Font Stack: Zero external font requests or CDNs
+       Restrained Palette: White, Dark Navy, Institutional Blue, Neutral Grey, Ink
+       ========================================================================== */
+    :root {
+      --color-white: #ffffff;
+      --color-page-bg: #f8fafc;
+      --color-card-bg: #ffffff;
+      --color-card-subtle: #f8fafc;
+      --color-navy: #0f2744;
+      --color-navy-dark: #091a2f;
+      --color-navy-muted: #1e3a5f;
+      --color-blue-primary: #1a56db;
+      --color-blue-hover: #1444b0;
+      --color-blue-subtle: #eff6ff;
+      --color-ink: #0f172a;
+      --color-ink-muted: #475569;
+      --color-ink-subtle: #64748b;
+      --color-border: #e2e8f0;
+      --color-border-subtle: #f1f5f9;
+      --color-border-focus: #1a56db;
+      --color-online: #16a34a;
+      --color-online-bg: #f0fdf4;
+      --color-danger: #991b1b;
+      --color-danger-bg: #fef2f2;
+      --color-danger-border: #fecaca;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -2px rgba(15, 23, 42, 0.03);
+      --font-stack: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--color-page-bg);
+      color: var(--color-ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Institutional Navigation Bar */
+    .gov-header {
+      background-color: var(--color-white);
+      border-bottom: 1px solid var(--color-border);
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.02);
+    }
+
+    .gov-header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo-frame {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .brand-text-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .inst-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--color-navy);
+      line-height: 1.2;
+    }
+
+    .dept-subtitle {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--color-ink-subtle);
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      margin-top: 1px;
+    }
+
+    .portal-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-navy);
+      background-color: #f1f5f9;
+      border: 1px solid var(--color-border);
+      padding: 4px 9px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+
+    /* Main Content Area */
+    .portal-main {
+      flex: 1;
+      padding: 24px 16px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .portal-shell {
+      width: 100%;
+      max-width: 660px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Page Scope Banner */
+    .scope-header {
+      padding-bottom: 4px;
+    }
+
+    .scope-kicker {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--color-blue-primary);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .scope-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--color-navy);
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+
+    .scope-desc {
+      font-size: 0.88rem;
+      color: var(--color-ink-muted);
+      margin-top: 4px;
+      line-height: 1.45;
+    }
+
+    /* Primary Administrative Card */
+    .admin-card {
+      background-color: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Administrative Recipient Status Strip */
+    .recipient-bar {
+      background-color: var(--color-card-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .recipient-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .recipient-header-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--color-ink-subtle);
+      display: inline-block;
+      flex-shrink: 0;
+      transition: background-color 0.2s ease;
+    }
+
+    .live-dot.connected {
+      background-color: var(--color-online);
+      box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.15);
+    }
+
+    .recipient-label {
+      font-size: 0.70rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-ink-subtle);
+    }
+
+    .recipient-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .recipient-source-note {
+      font-size: 0.75rem;
+      color: var(--color-ink-subtle);
+      margin-top: 1px;
+    }
+
+    .btn-sync {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      color: var(--color-navy);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+      touch-action: manipulation;
+    }
+
+    .btn-sync:hover:not(:disabled) {
+      background-color: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .btn-sync:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .sync-icon {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .sync-icon.rotating {
+      animation: spin 0.8s linear infinite;
+    }
+
+    /* Composer Section */
+    .composer-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .composer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .composer-title-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .composer-label {
+      font-size: 0.90rem;
+      font-weight: 700;
+      color: var(--color-navy);
+    }
+
+    .composer-desc {
+      font-size: 0.78rem;
+      color: var(--color-ink-subtle);
+      margin-top: 1px;
+    }
+
+    .counter-badge {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--color-ink-subtle);
+      font-variant-numeric: tabular-nums;
+      background-color: var(--color-card-subtle);
+      border: 1px solid var(--color-border);
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+
+    .counter-badge.warning {
+      color: #b45309;
+      background-color: #fffbeb;
+      border-color: #fde68a;
+    }
+
+    .counter-badge.limit-reached {
+      color: var(--color-danger);
+      background-color: var(--color-danger-bg);
+      border-color: var(--color-danger-border);
+      font-weight: 700;
+    }
+
+    .composer-textarea {
+      width: 100%;
+      min-height: 170px;
+      padding: 14px;
+      font-family: var(--font-stack);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--color-ink);
+      background-color: var(--color-white);
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .composer-textarea:focus {
+      border-color: var(--color-border-focus);
+      box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+    }
+
+    .composer-textarea.is-invalid {
+      border-color: var(--color-danger);
+      background-color: #fffafa;
+    }
+
+    .composer-error {
+      display: none;
+      font-size: 0.78rem;
+      color: var(--color-danger);
+      font-weight: 600;
+      padding-top: 2px;
+    }
+
+    /* Submit Action Area */
+    .action-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      min-height: 50px;
+      background-color: var(--color-navy);
+      color: var(--color-white);
+      border: 1px solid var(--color-navy-dark);
+      border-radius: var(--radius-md);
+      font-family: var(--font-stack);
+      font-size: 0.94rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      transition: background-color 0.15s ease, transform 0.05s ease;
+      touch-action: manipulation;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background-color: var(--color-navy-dark);
+    }
+
+    .btn-submit:active:not(:disabled) {
+      transform: scale(0.995);
+    }
+
+    .btn-submit:disabled {
+      background-color: #94a3b8;
+      border-color: #94a3b8;
+      cursor: not-allowed;
+      opacity: 0.85;
+    }
+
+    .action-subtext {
+      font-size: 0.75rem;
+      color: var(--color-ink-subtle);
+      text-align: center;
+      line-height: 1.35;
+    }
+
+    /* Administrative Status Box */
+    .status-card {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background-color: var(--color-card-subtle);
+      padding: 12px 14px;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .status-card-header {
+      font-size: 0.70rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-ink-subtle);
+      margin-bottom: 2px;
+    }
+
+    .status-card-message {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-ink);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .status-card-subtext {
+      font-size: 0.76rem;
+      color: var(--color-ink-muted);
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+
+    /* Status Variants */
+    .status-card.ready {
+      border-color: var(--color-border);
+      background-color: var(--color-card-subtle);
+    }
+
+    .status-card.sending {
+      border-color: #bfdbfe;
+      background-color: #eff6ff;
+    }
+    .status-card.sending .status-card-message {
+      color: var(--color-blue-primary);
+    }
+
+    .status-card.success {
+      border-color: #bbf7d0;
+      background-color: var(--color-online-bg);
+    }
+    .status-card.success .status-card-message {
+      color: #166534;
+      font-weight: 700;
+    }
+
+    .status-card.error {
+      border-color: var(--color-danger-border);
+      background-color: var(--color-danger-bg);
+    }
+    .status-card.error .status-card-message {
+      color: var(--color-danger);
+      font-weight: 700;
+    }
+
+    /* Minimal Spinner */
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-top-color: var(--color-white);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      display: inline-block;
+    }
+
+    .spinner.spinner-navy {
+      border: 2px solid rgba(15, 39, 68, 0.2);
+      border-top-color: var(--color-navy);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Institutional Footer */
+    .gov-footer {
+      background-color: var(--color-white);
+      border-top: 1px solid var(--color-border);
+      padding: 16px 20px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--color-ink-subtle);
+    }
+
+    .gov-footer-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .gov-footer-inst {
+      font-weight: 600;
+      color: var(--color-ink-muted);
+    }
+
+    /* Responsive Adaptations */
+    @media (min-width: 640px) {
+      .gov-header {
+        padding: 16px 24px;
+      }
+      .portal-main {
+        padding: 36px 24px 48px;
+      }
+      .card-body {
+        padding: 28px;
+        gap: 22px;
+      }
+      .scope-title {
+        font-size: 1.6rem;
+      }
+      .recipient-bar {
+        padding: 14px 18px;
+      }
+      .gov-footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Official Institutional Navigation Header -->
+  <header class="gov-header" role="banner">
+    <div class="gov-header-inner">
+      <div class="brand-block">
+        <div class="brand-logo-frame">
+          <img
+            src="asset/Image.png"
+            alt="SRM MCET Logo"
+            class="brand-logo"
+            id="brandLogo"
+            onerror="this.style.display='none'"
+          >
+        </div>
+        <div class="brand-text-block">
+          <span class="inst-title">SRM MCET</span>
+          <span class="dept-subtitle">Department of Artificial Intelligence and Data Science</span>
+        </div>
+      </div>
+      <span class="portal-tag">HOD Communication Portal</span>
+    </div>
+  </header>
+
+  <!-- Portal Scope & Body -->
+  <main class="portal-main" role="main">
+    <div class="portal-shell">
+
+      <!-- Executive Scope Header -->
+      <section class="scope-header" aria-labelledby="portalScopeTitle">
+        <span class="scope-kicker">Official Communication • Parent–Teacher Meeting</span>
+        <h1 class="scope-title" id="portalScopeTitle">PTM Invitation</h1>
+        <p class="scope-desc">Send an official Parent–Teacher Meeting invitation to registered parent contacts.</p>
+      </section>
+
+      <!-- Primary Administrative Card -->
+      <div class="admin-card">
+        <div class="card-body">
+
+          <!-- Recipient Database Status Bar -->
+          <section class="recipient-bar" aria-label="Recipient database status">
+            <div class="recipient-meta">
+              <div class="recipient-header-row">
+                <span class="live-dot" id="liveDot" aria-hidden="true"></span>
+                <span class="recipient-label">Recipient Database</span>
+              </div>
+              <div class="recipient-value" id="recipientStatusText">
+                <span id="recipientCount">--</span> records currently available
+              </div>
+              <div class="recipient-source-note" id="recipientSubnote">Synced from departmental records (Sheet1)</div>
+            </div>
+
+            <button
+              type="button"
+              class="btn-sync"
+              id="btnRefreshRecipients"
+              title="Synchronize records with connected departmental sheet"
+              aria-label="Synchronize recipient records"
+            >
+              <svg class="sync-icon" id="syncIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+              <span id="btnSyncText">Sync Records</span>
+            </button>
+          </section>
+
+          <!-- Invitation Message Composer -->
+          <section class="composer-group">
+            <div class="composer-header">
+              <div class="composer-title-block">
+                <label for="messageInput" class="composer-label">PTM Invitation Message</label>
+                <span class="composer-desc">Compose the official communication to be dispatched to registered parent contacts.</span>
+              </div>
+              <span class="counter-badge" id="charCounter" aria-live="polite">0 / 2500</span>
+            </div>
+
+            <textarea
+              id="messageInput"
+              class="composer-textarea"
+              maxlength="2500"
+              rows="6"
+              placeholder="Enter official Parent–Teacher Meeting invitation message, date, schedule, and reporting details..."
+              aria-describedby="charCounter composerError"
+              required
+            ></textarea>
+
+            <div id="composerError" class="composer-error" role="alert"></div>
+          </section>
+
+          <!-- Action Submission Group -->
+          <div class="action-group">
+            <button
+              type="button"
+              id="btnSendSMS"
+              class="btn-submit"
+              aria-label="Send official PTM invitation to registered parent contacts"
+            >
+              <span id="btnSendSpinner" class="spinner" style="display: none;" aria-hidden="true"></span>
+              <span id="btnSendText">SEND INVITATION</span>
+            </button>
+            <p class="action-subtext">This invitation will be submitted to all currently valid registered parent contacts.</p>
+          </div>
+
+          <!-- Official Status Panel -->
+          <section
+            id="statusPanel"
+            class="status-card ready"
+            aria-live="polite"
+            role="region"
+            aria-label="Dispatch status"
+          >
+            <div class="status-card-header">Dispatch Status</div>
+            <div class="status-card-message" id="statusMessage">
+              <span>Ready to send</span>
+            </div>
+            <div class="status-card-subtext" id="statusSubtext"></div>
+          </section>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Restrained Institutional Footer -->
+  <footer class="gov-footer" role="contentinfo">
+    <div class="gov-footer-inner">
+      <span class="gov-footer-inst">SRM MCET • Department of Artificial Intelligence and Data Science</span>
+      <span>PTM Communication Portal</span>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       VANILLA JAVASCRIPT LOGIC
+       ========================================================================== -->
+  <script>
+    /**
+     * CONFIGURATION
+     * Deployed Google Apps Script Web App URL connected to Sheet1
+     */
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWTUVZNVXOVhUuIDKe4ZcRQ770K2wQsF2ZxO65FbloT7Ip11ocDwQNMOOc_A5rOrqkiA/exec";
+
+    // DOM Elements
+    const messageInput = document.getElementById("messageInput");
+    const charCounter = document.getElementById("charCounter");
+    const composerError = document.getElementById("composerError");
+    const btnSendSMS = document.getElementById("btnSendSMS");
+    const btnSendText = document.getElementById("btnSendText");
+    const btnSendSpinner = document.getElementById("btnSendSpinner");
+    const btnRefreshRecipients = document.getElementById("btnRefreshRecipients");
+    const btnSyncText = document.getElementById("btnSyncText");
+    const syncIcon = document.getElementById("syncIcon");
+    const recipientCountEl = document.getElementById("recipientCount");
+    const recipientStatusText = document.getElementById("recipientStatusText");
+    const recipientSubnote = document.getElementById("recipientSubnote");
+    const liveDot = document.getElementById("liveDot");
+    const statusPanel = document.getElementById("statusPanel");
+    const statusMessage = document.getElementById("statusMessage");
+    const statusSubtext = document.getElementById("statusSubtext");
+
+    const MAX_CHARS = 2500;
+    let currentRecipientCount = 0;
+    let isSubmitting = false;
+
+    /**
+     * Live Character Counter & Limit Locking
+     */
+    function updateCharacterCounter() {
+      const currentLength = messageInput.value.length;
+      charCounter.textContent = `${currentLength} / ${MAX_CHARS}`;
+
+      if (currentLength >= MAX_CHARS) {
+        charCounter.className = "counter-badge limit-reached";
+      } else if (currentLength >= MAX_CHARS * 0.9) {
+        charCounter.className = "counter-badge warning";
+      } else {
+        charCounter.className = "counter-badge";
+      }
+
+      if (currentLength > 0 && composerError.style.display === "block") {
+        clearValidationError();
+      }
+    }
+
+    messageInput.addEventListener("input", updateCharacterCounter);
+    messageInput.addEventListener("paste", () => {
+      setTimeout(updateCharacterCounter, 10);
+    });
+
+    /**
+     * Inline Validation Feedback
+     */
+    function showValidationError(message) {
+      composerError.textContent = message;
+      composerError.style.display = "block";
+      messageInput.classList.add("is-invalid");
+      messageInput.focus();
+    }
+
+    function clearValidationError() {
+      composerError.textContent = "";
+      composerError.style.display = "none";
+      messageInput.classList.remove("is-invalid");
+    }
+
+    /**
+     * Administrative Status Panel States
+     */
+    function setStatus(state, mainText, subText = "") {
+      statusPanel.className = `status-card ${state}`;
+
+      if (state === "sending") {
+        statusMessage.innerHTML = `<span class="spinner spinner-navy" aria-hidden="true"></span><span>${escapeHtml(mainText)}</span>`;
+      } else if (state === "success") {
+        statusMessage.innerHTML = `<span style="color:#16a34a; font-weight:bold;">✓</span><span>${escapeHtml(mainText)}</span>`;
+      } else if (state === "error") {
+        statusMessage.innerHTML = `<span style="color:#991b1b; font-weight:bold;">✕</span><span>${escapeHtml(mainText)}</span>`;
+      } else {
+        statusMessage.innerHTML = `<span>${escapeHtml(mainText)}</span>`;
+      }
+
+      statusSubtext.textContent = subText;
+    }
+
+    function escapeHtml(string) {
+      const div = document.createElement("div");
+      div.textContent = string;
+      return div.innerHTML;
+    }
+
+    /**
+     * Update Dynamic Recipient Count UI
+     */
+    function updateRecipientDisplay(count) {
+      currentRecipientCount = count;
+      recipientStatusText.innerHTML = `<span id="recipientCount">${count}</span> records currently available`;
+    }
+
+    /**
+     * Fetch Recipient Information dynamically from Google Apps Script Web App
+     */
+    async function fetchRecipients(isManualSync = false) {
+      btnRefreshRecipients.disabled = true;
+      if (btnSyncText) btnSyncText.textContent = "Syncing records...";
+      if (syncIcon) syncIcon.classList.add("rotating");
+
+      if (!isManualSync) {
+        recipientStatusText.innerHTML = `<span id="recipientCount">--</span> records (Loading...)`;
+        recipientSubnote.textContent = "Connecting to departmental records...";
+        setStatus("ready", "Loading recipient records...", "Contacting database endpoint...");
+      }
+
+      try {
+        const url = `${APPS_SCRIPT_URL}?action=getRecipients&t=${Date.now()}`;
+        const response = await fetch(url, {
+          method: "GET",
+          mode: "cors"
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data && data.success) {
+          const count = typeof data.recipientCount === "number" ? data.recipientCount : 0;
+          updateRecipientDisplay(count);
+          recipientSubnote.textContent = "Synced from departmental records (Sheet1)";
+
+          if (liveDot) liveDot.classList.add("connected");
+
+          if (isManualSync) {
+            setStatus("ready", "Ready to send", `${count} records synced from Sheet1.`);
+          } else {
+            setStatus("ready", "Ready to send", "");
+          }
+        } else {
+          throw new Error(data && data.message ? data.message : "Failed to retrieve records from Sheet1");
+        }
+      } catch (err) {
+        console.warn("Could not retrieve recipients from Apps Script:", err.message);
+        recipientStatusText.innerHTML = `<span id="recipientCount">?</span> records`;
+        recipientSubnote.textContent = "Unable to connect to departmental records";
+        if (liveDot) liveDot.classList.remove("connected");
+
+        let errorMsg = "Unable to connect to SMS service. Please try again.";
+        if (err.message && err.message.includes("Sheet1")) {
+          errorMsg = err.message;
+        }
+        setStatus("error", "Failed to retrieve records", errorMsg);
+      } finally {
+        btnRefreshRecipients.disabled = false;
+        if (btnSyncText) btnSyncText.textContent = "Sync Records";
+        if (syncIcon) syncIcon.classList.remove("rotating");
+      }
+    }
+
+    /**
+     * Send Official PTM Invitation
+     */
+    async function handleSendSMS() {
+      if (isSubmitting) return;
+
+      clearValidationError();
+      const message = messageInput.value.trim();
+
+      // 1. Validation
+      if (!message || message.length === 0) {
+        showValidationError("Please enter a PTM invitation message.");
+        return;
+      }
+
+      if (message.length > MAX_CHARS) {
+        showValidationError(`Message exceeds maximum limit of ${MAX_CHARS} characters.`);
+        return;
+      }
+
+      if (currentRecipientCount === 0 && recipientStatusText.textContent.indexOf("--") === -1) {
+        showValidationError("No records available in database. Please sync or verify the sheet.");
+        return;
+      }
+
+      // 2. Setting State
+      isSubmitting = true;
+      btnSendSMS.disabled = true;
+      btnRefreshRecipients.disabled = true;
+      messageInput.disabled = true;
+      btnSendSpinner.style.display = "inline-block";
+      btnSendText.textContent = "SUBMITTING INVITATION...";
+      setStatus("sending", "Submitting invitation...", "Contacting SMS gateway...");
+
+      try {
+        const payload = JSON.stringify({
+          action: "sendSMS",
+          message: message
+        });
+
+        const response = await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: payload
+        });
+
+        if (!response.ok) {
+          throw new Error(`Server returned status HTTP ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        // 3. Process Result (Distinguishing API acceptance from handset delivery)
+        if (result && result.success && result.apiAccepted) {
+          const count = typeof result.recipientCount === "number" ? result.recipientCount : currentRecipientCount;
+          const countProcessed = count === 1 ? "1 recipient processed" : `${count} recipients processed`;
+
+          setStatus(
+            "success",
+            "SMS request submitted successfully",
+            countProcessed
+          );
+
+          // Refresh recipients to update statuses
+          fetchRecipients(false);
+        } else {
+          const failureReason = (result && result.message) ? result.message : "SMS request was rejected";
+          setStatus(
+            "error",
+            "SMS request was rejected",
+            failureReason
+          );
+        }
+      } catch (err) {
+        console.error("SMS automation network/request error:", err);
+        setStatus(
+          "error",
+          "SMS request could not be submitted",
+          "Unable to connect to SMS service. Please try again."
+        );
+      } finally {
+        isSubmitting = false;
+        btnSendSMS.disabled = false;
+        btnRefreshRecipients.disabled = false;
+        messageInput.disabled = false;
+        btnSendSpinner.style.display = "none";
+        btnSendText.textContent = "SEND INVITATION";
+      }
+    }
+
+    // Event Listeners
+    btnSendSMS.addEventListener("click", handleSendSMS);
+    btnRefreshRecipients.addEventListener("click", () => fetchRecipients(true));
+
+    // Initialize on page load
+    document.addEventListener("DOMContentLoaded", () => {
+      updateCharacterCounter();
+      fetchRecipients(false);
+    });
+  </script>
+</body>
+</html>
